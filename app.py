@@ -1,5 +1,5 @@
 import json
-from flask import Flask,request,jsonify,render_template
+from flask import Flask,request,jsonify,render_template,request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
@@ -18,3 +18,13 @@ class Record(db.Model):
 @app.route('/',methods = ['GET'])
 def index():
     return render_template('index.html',title = 'Todo List')
+
+@app.route('/record',methods=['POST'])
+def add_record():
+    Event = request.form['event']
+    record = Record(event = Event,deadline = '2/30')
+    db.session.add(record)
+    db.session.commit()
+    return Event,200
+    
+    # return render_template('index.html',title = 'Todo List')
