@@ -38,6 +38,7 @@
                   </ul>
                 </div>
         </nav>
+
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <h1 class="display-4">Fluid jumbotron</h1>
@@ -48,6 +49,7 @@
                     </button>
             </div>
         </div>
+
         <form id='post-form' style="margin: 0px auto;width: 1200px;" method="POST">
             <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -57,11 +59,37 @@
             </div>
                   <button class="btn btn-primary" type='submit' formaction="/record">Submit</button>
         </form>
+
+
+        <div class="input-group mb-3" style="margin:20px auto;width: 2500px;">
+          <div class="row" style="margin:0px auto">
+            <div style="padding:0px;">
+              <select class="custom-select" id="inputGroupSelect01" select='Mode'>
+                <option value="1">Add</option>
+                <option value="2" class = 'edit-delete'>Edit</option>
+                <option value="3" class = 'edit-delete'>Delete</option>
+              </select>
+            </div>
+            <div style="padding:0px;width:800px">
+              <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Input Event">
+            </div>
+            <div style="padding:0px;">
+              <select class="custom-select" id="inputGroupSelect01">
+                <option value="1">Normal</option>
+                <option value="2">Very Important</option>
+                <option value="3">Less Important</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+
         <div class="test2" style="height: 50px;background-color: lightgoldenrodyellow">test</div>
         <div id='Todo-List' style="margin:0px auto;width: 1200px;">
                 <ul class="list-group"style="margin:0px;">
                 </ul>
         </div>
+        
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

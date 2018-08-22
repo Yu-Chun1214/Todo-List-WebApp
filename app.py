@@ -30,7 +30,7 @@ def add_record():
     # return flask.redirect('/')
 
 @app.route('/record',methods=['GET'])
-def get_record():
+def get_records():
     records = Record.query.all()
     records_data = [
         {
@@ -42,4 +42,14 @@ def get_record():
     ]
     return jsonify(records_data),200
     
-    
+@app.route('/record/<int:record_id>',methods = ['GET'])
+def get_record(record_id):
+    record = (
+        Record.query.filter_by(id = record_id).first()
+    )
+    record_data = {
+        'id' : record.id,
+        'event' : record.event,
+        'deadline' : record.deadline,
+    }
+    return jsonify(record_data),200

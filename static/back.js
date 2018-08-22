@@ -69,9 +69,13 @@ $('#post-form').submit(function(e){
 })
 */
 $('.test2').click(function(e){
-    var data = getInputData();
-    console.log(data);
-    postItemToServer(data)
+    var mode = $('[select="Mode"]').val();
+    console.log(mode);
 })
+$('[select="Mode"]').click(function(e){
+    var mode = $('[select="Mode"]').val();
+    console.log(mode);
+})
+
 
 getItemFromServer();
