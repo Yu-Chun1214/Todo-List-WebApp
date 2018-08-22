@@ -69,12 +69,43 @@ $('#post-form').submit(function(e){
 })
 */
 $('.test2').click(function(e){
-    var mode = $('[select="Mode"]').val();
-    console.log(mode);
+    console.log(document.getElementById('ih'));
+    console.log(document.getElementById('importance-select'));
+    if(document.getElementById('ih')===null){
+        console.log('null')
+    }
 })
-$('[select="Mode"]').click(function(e){
-    var mode = $('[select="Mode"]').val();
-    console.log(mode);
+$('select').change(function(e){
+    var mode = $(this).children('option:selected').text();
+    
+    console.log($('[class="add-block"]').attr);
+    if(mode==='Edit' || mode==='Delete'){
+        document.getElementById('input-block').remove();
+        document.getElementById('importance-select').remove();
+
+    }
+    else if(mode==='Add'){
+        console.log(mode)
+        if(document.getElementById('input-block')===null && document.getElementById('importance-select')===null){
+            console.log('if null')
+            $('#user-input').append(`
+            <div class="input-group-append" id="input-block">
+              <div class="form-group">
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" style="width: 800px;">
+              </div>
+            </div>
+            <div id="importance-select">
+            <select class="custom-select" id="inputGroupSelect02">                
+                <option selected>Importance</option>
+                <option value="1">Very Important</option>
+                <option value="2">Normal</option>
+                <option value="3">Less Important</option>
+            </select>
+            </div>
+            `)
+
+        }
+    }
 })
 
 

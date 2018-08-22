@@ -40,7 +40,7 @@
         </nav>
 
         <div class="jumbotron jumbotron-fluid">
-            <div class="container">
+            <div class="container" style="width: auto" >
                 <h1 class="display-4">Fluid jumbotron</h1>
                 <hr class="my-4">
                 <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
@@ -59,32 +59,43 @@
             </div>
                   <button class="btn btn-primary" type='submit' formaction="/record">Submit</button>
         </form>
+        <div class="test2" style="height: 50px;background-color: lightgoldenrodyellow">test</div>
 
-
-        <div class="input-group mb-3" style="margin:20px auto;width: 2500px;">
-          <div class="row" style="margin:0px auto">
-            <div style="padding:0px;">
-              <select class="custom-select" id="inputGroupSelect01" select='Mode'>
+        <div class="event" style="margin:auto;width:1200px;">
+          <div class="input-group mb-3" id="user-input">
+            <div id="mode-select">
+              <select class="custom-select" id="inputGroupSelect02">
+                <option selected>Mode</option>
                 <option value="1">Add</option>
-                <option value="2" class = 'edit-delete'>Edit</option>
-                <option value="3" class = 'edit-delete'>Delete</option>
+                <option value="2">Edit</option>
+                <option value="3">Delete</option>
               </select>
             </div>
-            <div style="padding:0px;width:800px">
-              <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Input Event">
+            <!--
+            <div class="input-group-append" id="input-block">
+              <div class="form-group">
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" style="width: 800px;">
+              </div>
             </div>
-            <div style="padding:0px;">
-              <select class="custom-select" id="inputGroupSelect01">
-                <option value="1">Normal</option>
-                <option value="2">Very Important</option>
-                <option value="3">Less Important</option>
+            <div id="importance-select">
+              <select class="custom-select" id="inputGroupSelect02">                
+                  <option selected>Importance</option>
+                  <option value="1">Very Important</option>
+                  <option value="2">Normal</option>
+                  <option value="3">Less Important</option>
               </select>
             </div>
+            -->
+            <select class="custom-select" id="inputGroupSelect02">
+                <option selected>Mode</option>
+                <option value="1">Add</option>
+                <option value="2">Edit</option>
+                <option value="3">Delete</option>
+            </select>
           </div>
         </div>
-        
 
-        <div class="test2" style="height: 50px;background-color: lightgoldenrodyellow">test</div>
+        
         <div id='Todo-List' style="margin:0px auto;width: 1200px;">
                 <ul class="list-group"style="margin:0px;">
                 </ul>
