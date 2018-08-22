@@ -1,4 +1,5 @@
 import json
+import flask
 from flask import Flask,request,jsonify,render_template,request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -25,6 +26,20 @@ def add_record():
     record = Record(event = Event,deadline = '2/30')
     db.session.add(record)
     db.session.commit()
-    return Event,200
+    return render_template('index.html',title = 'Todo List'),200
+    # return flask.redirect('/')
+
+@app.route('/record',methods=['GET'])
+def get_record():
+    records = Record.query.all()
+    records_data = [
+        {
+            'id':record.id,
+            'event':record.event,
+            'deadline':record.deadline
+        }
+        for record in records
+    ]
+    return jsonify(records_data),200
     
-    # return render_template('index.html',title = 'Todo List')
+    
