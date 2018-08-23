@@ -8,3 +8,112 @@
 div#mode-select select{
     background-color: #e9ecef;
 }
+@media only screen and (max-width :374px){
+    div#mode-select select{
+        width: 70px;
+    }
+    input[type="event"]{
+        width: 120px;
+    }
+    div#Todo-List{
+        width: 300px;
+        margin: auto;
+    }
+    form#event-form{
+        width: 300px;
+        margin:auto;
+    }
+    li.list-group-item{
+        width: 300px;
+        margin:auto;
+    }div#importance-select{
+        width: 90px;
+    }
+    html{
+        font-size: 5px;
+    }
+}
+@media only screen and (width :375px){
+    input[type="event"]{
+        width: 130px;
+    }
+    div#Todo-List{
+        width: 300px;
+        margin: auto;
+    }
+    form#event-form{
+        width: 300px;
+        margin:auto;
+    }
+    li.list-group-item{
+        width: 300px;
+        margin:auto;
+    }div#importance-select{
+        width: 90px;
+    }
+    html{
+        font-size: 5px;
+    }
+}
+@media only screen and (max-width:768px) and (min-width:400px){
+    input[type="event"]{
+        width: 200px;
+    }
+    div#Todo-List{
+        width: 400px;
+        margin: auto;
+    }
+    form#event-form{
+        width: 400px;
+        margin:auto;
+    }
+    li.list-group-item{
+        width: 400px;
+        margin:auto;
+    }div#importance-select{
+        width: 100px;
+    }
+    html{
+        font-size: 8px;
+    }
+}
+@media only screen and (min-width:769px){
+    input[type="event"]{
+        width: 500px;
+    }
+    div#Todo-List{
+        width: 700px;
+        margin: auto;
+    }
+    form#event-form{
+        width: 700px;
+        margin:auto;
+    }
+    li.list-group-item{
+        width: 700px;
+        margin: 0px auto;
+    }
+    div#importance-select{
+        width: 100px;
+    }
+}
+@media only screen and (min-width:1300px){
+    input[type="event"]{
+        width: 800px;
+    }
+    div#Todo-List{
+        width: 1200px;
+        margin: auto;
+    }
+    form#event-form{
+        width: 1200px;
+        margin:auto;
+    }
+    li.list-group-item{
+        width: 1200px;
+        margin: 0px auto;
+    }
+    div#importance-select{
+        width: 200px;
+    }
+}

@@ -1,21 +1,10 @@
 const Debug_Mode = false;
 const BASE_URL = window.location.origin;
-const API = BASE_URL + '/record';
+const API = BASE_URL + "/record";
 
 function preventReload(e){
     if(Debug_Mode){
         e.preventDefault();
-    }
-}
-
-function getInputData(){
-    const mode= $('.event div#mode-select option:selected').text();
-    if(mode==='Add'){
-        return getAddData();
-    }else if(mode==='Edit'){
-        return getEditData();
-    }else if(mode==='Delete'){
-        return getDeleteData();
     }
 }
 
@@ -71,6 +60,7 @@ function list_loadData(data){
     const dataHtml = list_generateDataHtml(data);
     $('div#Todo-List .list-group').append(dataHtml);
 }
+
 function getItemFromServer(load){
     
     $.ajax({
@@ -82,6 +72,7 @@ function getItemFromServer(load){
     })
     
 }
+
 function delete_loadData(data){
     const dataHtml = choose_generateDataHtml(data);
     const inner = `<div id="mode-select">
@@ -97,6 +88,7 @@ function delete_loadData(data){
     $('#user-input').append(inner+dataHtml);
 
 }
+
 function edit_loadData(data){
     const data_html = choose_generateDataHtml(data);
     const inner = `<div id="mode-select">
@@ -107,7 +99,7 @@ function edit_loadData(data){
     </select>
   </div>`+data_html+`<div class="input-group-append" id="input-block">
   <div class="form-group">
-    <input type="event" class="form-control" id="eventInput" placeholder="Enter event" style="width: 400px;">
+    <input type="event" class="form-control" id="eventInput" placeholder="Enter event" style="width: 300px;">
   </div>
 </div>
 <div id="importance-select">
@@ -130,10 +122,6 @@ $('ul.list-group').delegate('li','click',function(e){
     }else{
         $(this).attr('class','list-group-item disabled');
     }
-})
-
-$('.test2').click(function(e){
-    console.log(getInputData());
 })
 
 $('.event').on("change","select",function(e){
@@ -163,7 +151,7 @@ $('.event').on("change","select",function(e){
         
         <div class="input-group-append" id="input-block">
           <div class="form-group">
-            <input type="event" class="form-control" id="eventInput" placeholder="Enter event" style="width: 800px;">
+            <input type="event" class="form-control" id="eventInput" placeholder="Enter event">
           </div>
         </div>
         <div id="importance-select">
@@ -205,7 +193,7 @@ function editInput(){
             </div>
     <div class="input-group-append" id="input-block">
               <div class="form-group">
-                <input type="event" class="form-control" id="eventInput" placeholder="Enter event" style="width: 800px;">
+                <input type="event" class="form-control" id="eventInput" placeholder="Enter event">
               </div>
             </div>
             <div id="importance-select">
@@ -222,13 +210,68 @@ function editInput(){
       $('#user-input').html(data_html);
   }
 }
-function PostAddDataToServer(data){
-    $ajax({
+function PostAddDataToServer(inputdata){
+    $.ajax({
         url:API,
         method:'POST',
-        success:function(){
-            
+        data:inputdata,
+        success:function(data){
+            console.log(data);
         }
     })
 }
+$('#CRUD').click(function(e){
+    preventReload(e);
+    const mode = $('.event div#mode-select option:selected').text();
+    if(mode==='Add'){
+        const data = getAddData();
+        console.log(data);
+        PostAddDataToServer(data);
+    }else if(mode==='Edit'){
+        const editData = getEditData();
+        console.log(editData);
+        putEditData(editData);
+    }else if(mode==='Delete'){
+        const delData = getDeleteData();
+        console.log(delData);
+        deleteData(delData['id']);
+    }
+})
+
+$('.test2').click(function(e){
+    var data = getAddData();
+    console.log('test2');
+    console.log(data);
+    alert();
+    PostAddDataToServer(data);
+})
+
+function putEditData(newData){
+    const editId = newData['id'];
+    const sendData = {
+        'event':newData['event'],
+        'importance':newData['importance'],
+    }
+    alert(sendData);
+    alert(`${API}/${editId}`);
+    $.ajax({
+        url:`${API}/${editId}`,
+        method:'PUT',
+        data:sendData,
+        success:function(data){
+            console.log(data);
+        }
+    })
+}
+
+function deleteData(deleteId){
+    $.ajax({
+        url:`${API}/${deleteId}`,
+        method:'DELETE',
+        success:function(){
+            console.log(deleteId)
+        }
+    })
+}
+
 main_list();

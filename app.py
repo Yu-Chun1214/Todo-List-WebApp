@@ -22,13 +22,15 @@ def index():
 
 @app.route('/record',methods=['POST'])
 def add_record():
-    Event = request.form['event']
-    record = Record(event = Event,importance = '2/30')
+    req_data = request.form
+    record = Record(event = req_data['event'],importance = req_data['importance'])
     db.session.add(record)
     db.session.commit()
-    return render_template('index.html',title = 'Todo List'),200
+    return "Creat Successfully",200
     
     
+    
+
 @app.route('/record',methods=['GET'])
 def get_records():
     records = Record.query.all()
@@ -53,3 +55,20 @@ def get_record(record_id):
         'importance' : record.importance,
     }
     return jsonify(record_data),200
+
+@app.route('/record/<int:record_id>',methods = ['PUT'])
+def edit_record(record_id):
+    req_data = request.form
+    record = Record.query.filter_by(id = record_id).first()
+    record.event = req_data['event']
+    record.importance = req_data['importance']
+    db.session.add(record)
+    db.session.commit()
+    return 'Edit Succeeded',200
+
+@app.route('/record/<int:record_id>',methods = ['DELETE'])
+def delete_record(record_id):
+    record = Record.query.filter_by(id=record_id).first()
+    db.session.delete(record)
+    db.session.commit()
+    return 'Delete Succeeded', 200
