@@ -48,9 +48,19 @@ function postItemToServer(inputdata){
 function list_generateDataHtml(data){
     elemnt_html = '';
     for(item of data){
-        var data_html = `
-        <li class="list-group-item" id='list-${item['id']}'><span class='tag'>${item['id']}</span>${item['event']}</li>
-        `
+        if(item['importance']==="Very Important"){
+            var data_html = `
+            <li class="list-group-item" id='list-${item['id']}'><b><span class='tag'>${item['id']}</span>${item['event']}</b></li>
+            `
+        }else if(item['importance']==="Normal" || item['importance']==="Importance"){
+            var data_html = `
+            <li class="list-group-item" id='list-${item['id']}'><span class='tag'>${item['id']}</span>${item['event']}</li>
+            `
+        }else{
+            var data_html = `
+            <li class="list-group-item disabled" id='list-${item['id']}'><span class='tag'>${item['id']}</span>${item['event']}</li>
+            `
+        }
         elemnt_html += data_html;
     }
     return elemnt_html;
@@ -104,12 +114,12 @@ function edit_loadData(data){
 </div>
 <div id="importance-select">
   <select class="custom-select" id="inputGroupSelect02">                
-      <option selected>Importance</option>
+      <option selected>Normal</option>
       <option value="1">Very Important</option>
-      <option value="2">Normal</option>
-      <option value="3">Less Important</option>
+      <option value="2">Less Important</option>
   </select>
-</div>`;
+</div>
+`;
 const outter = `<div class="input-group mb-3" id="user-input"></div>`
 $('.event').append(outter);
 $('#user-input').append(inner);
@@ -117,11 +127,15 @@ console.log('edit_loadData');
 }
 
 $('ul.list-group').delegate('li','click',function(e){
-    if($(this).attr('class')==='list-group-item disabled'){
-        $(this).attr('class','list-group-item');
+    
+    if($(this).attr('style') ==='text-decoration: line-through;'){
+        $(this).attr('style','');
+
     }else{
-        $(this).attr('class','list-group-item disabled');
+        $(this).attr('style','text-decoration: line-through;');
     }
+    
+
 })
 
 $('.event').on("change","select",function(e){
@@ -156,10 +170,9 @@ $('.event').on("change","select",function(e){
         </div>
         <div id="importance-select">
           <select class="custom-select" id="inputGroupSelect02">                
-              <option selected>Importance</option>
+              <option selected>Normal</option>
               <option value="1">Very Important</option>
-              <option value="2">Normal</option>
-              <option value="3">Less Important</option>
+              <option value="2">Less Important</option>
           </select>
         </div>
       </div>`);
@@ -198,10 +211,9 @@ function editInput(){
             </div>
             <div id="importance-select">
               <select class="custom-select" id="inputGroupSelect02">                
-                  <option selected>Importance</option>
+                  <option selected>Normal</option>
                   <option value="1">Very Important</option>
-                  <option value="2">Normal</option>
-                  <option value="3">Less Important</option>
+                  <option value="2">Less Important</option>
               </select>
             </div>
         </div>
@@ -246,14 +258,14 @@ $('.test2').click(function(e){
     PostAddDataToServer(data);
 })
 
+
+
 function putEditData(newData){
     const editId = newData['id'];
     const sendData = {
         'event':newData['event'],
         'importance':newData['importance'],
     }
-    alert(sendData);
-    alert(`${API}/${editId}`);
     $.ajax({
         url:`${API}/${editId}`,
         method:'PUT',

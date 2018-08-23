@@ -2,9 +2,6 @@
     padding:5px;
     margin: 0px auto;
 }
-[class = 'list-group-item disabled']{
-    text-decoration: line-through;
-}
 div#mode-select select{
     background-color: #e9ecef;
 }
@@ -34,6 +31,9 @@ div#mode-select select{
     }
 }
 @media only screen and (width :375px){
+    div#mode-select select{
+        width: 70px;
+    }
     input[type="event"]{
         width: 130px;
     }
@@ -56,6 +56,9 @@ div#mode-select select{
     }
 }
 @media only screen and (max-width:768px) and (min-width:400px){
+    div#mode-select select{
+        width: 100px;
+    }
     input[type="event"]{
         width: 200px;
     }
@@ -78,6 +81,9 @@ div#mode-select select{
     }
 }
 @media only screen and (min-width:769px){
+    div#mode-select select{
+        width: 100px;
+    }
     input[type="event"]{
         width: 500px;
     }
@@ -97,7 +103,10 @@ div#mode-select select{
         width: 100px;
     }
 }
-@media only screen and (min-width:1300px){
+@media only screen and (min-width:1500px){
+    div#mode-select select{
+        width: 200px;
+    }
     input[type="event"]{
         width: 800px;
     }

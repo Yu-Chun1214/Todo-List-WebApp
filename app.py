@@ -15,6 +15,7 @@ class Record(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     event = db.Column(db.String(120),nullable = True)
     importance = db.Column(db.String(120),nullable = True)
+    
 
 @app.route('/',methods = ['GET'])
 def index():
