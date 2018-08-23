@@ -14,7 +14,7 @@ migrate = Migrate(app,db)
 class Record(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     event = db.Column(db.String(120),nullable = True)
-    deadline = db.Column(db.String(120),nullable = True)
+    importance = db.Column(db.String(120),nullable = True)
 
 @app.route('/',methods = ['GET'])
 def index():
@@ -23,12 +23,12 @@ def index():
 @app.route('/record',methods=['POST'])
 def add_record():
     Event = request.form['event']
-    record = Record(event = Event,deadline = '2/30')
+    record = Record(event = Event,importance = '2/30')
     db.session.add(record)
     db.session.commit()
     return render_template('index.html',title = 'Todo List'),200
-    # return flask.redirect('/')
-
+    
+    
 @app.route('/record',methods=['GET'])
 def get_records():
     records = Record.query.all()
@@ -36,7 +36,7 @@ def get_records():
         {
             'id':record.id,
             'event':record.event,
-            'deadline':record.deadline
+            'importance':record.importance,
         }
         for record in records
     ]
@@ -50,6 +50,6 @@ def get_record(record_id):
     record_data = {
         'id' : record.id,
         'event' : record.event,
-        'deadline' : record.deadline,
+        'importance' : record.importance,
     }
     return jsonify(record_data),200

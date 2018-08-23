@@ -5,3 +5,6 @@
 [class = 'list-group-item disabled']{
     text-decoration: line-through;
 }
+div#mode-select select{
+    background-color: #e9ecef;
+}

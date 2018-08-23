@@ -9,8 +9,38 @@ function preventReload(e){
 }
 
 function getInputData(){
+    const mode= $('.event div#mode-select option:selected').text();
+    if(mode==='Add'){
+        return getAddData();
+    }else if(mode==='Edit'){
+        return getEditData();
+    }else if(mode==='Delete'){
+        return getDeleteData();
+    }
+}
+
+function getAddData(){
+    var event = {
+        'event':$('input#eventInput').val(),
+        'importance':$('.event div#importance-select option:selected').text(),
+    }
+    return event;
+}
+
+function getEditData(){
     var event={
-        'event':$('input[name="event"]').val(),
+        'id':$('.event select[name="delete"] option:selected').val(),
+        'select':$('.event select[name="delete"] option:selected').text(),
+        'event':$('input#eventInput').val(),
+        'importance':$('.event div#importance-select option:selected').text(),
+    }
+    return event;
+}
+
+function getDeleteData(){
+    var event={
+        'id':$('.event select[name="delete"] option:selected').val(),
+        'select':$('.event select[name="delete"] option:selected').text(),
     }
     return event;
 }
@@ -41,7 +71,6 @@ function list_loadData(data){
     const dataHtml = list_generateDataHtml(data);
     $('div#Todo-List .list-group').append(dataHtml);
 }
-
 function getItemFromServer(load){
     
     $.ajax({
@@ -104,11 +133,7 @@ $('ul.list-group').delegate('li','click',function(e){
 })
 
 $('.test2').click(function(e){
-    console.log(document.getElementById('ih'));
-    console.log(document.getElementById('importance-select'));
-    if(document.getElementById('ih')===null){
-        console.log('null')
-    }
+    console.log(getInputData());
 })
 
 $('.event').on("change","select",function(e){
@@ -158,13 +183,14 @@ function main_list(){
 }
 
 function choose_generateDataHtml(data){
-    element_html='<select class="custom-select" id="inputGroupSelect02" name="delete">';
+    element_html='<select class="custom-select" id="inputGroupSelect02" name="delete">'+'<option selected>Event</option>';
     for(item of data){
         var data_html=`
-        <option value="${item['id']}"><h1>${item['id']} </h1>${item['event']}</option>
+        <option value="${item['id']}"><span">${item['id']} </span>${item['event']}</option>
         `
         element_html += data_html;
     }
+
     return element_html+'</select>';
 }
 function editInput(){
@@ -195,5 +221,14 @@ function editInput(){
   if(document.getElementById('input-block')===null || document.getElementById('importance-select')===null){
       $('#user-input').html(data_html);
   }
+}
+function PostAddDataToServer(data){
+    $ajax({
+        url:API,
+        method:'POST',
+        success:function(){
+            
+        }
+    })
 }
 main_list();
