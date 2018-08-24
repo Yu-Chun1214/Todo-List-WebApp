@@ -17,23 +17,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                      <a class="nav-link" href="/templates/index.html">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Record
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/templates/index.html">Add</a>
-                        <a class="dropdown-item" href="#">Edit</a>
-                        <a href="#" class="dropdown-item">Delete</a>
-                      </div>
+                      <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link disable">Tip</a>
+                        <a href="https://hackmd.io/j69f7P6ZRoSLInMC78k26g?view" class="nav-link disable">Tip</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link disabled" href="#">More Information</a>
+                      
+                      <a class="nav-link disabled" href="https://github.com/Yu-Chun1214/X-Village-Todo">More Information</a>
                     </li>
                   </ul>
                 </div>
@@ -44,7 +35,7 @@
                 <h1 class="display-4">Todo-List</h1>
                 <hr class="my-4">
                 <p class="lead">Amazing Todo-List System</p>
-                <button type="submit" class="btn btn-primary btn-lg">
+                <button type="submit" class="btn btn-primary btn-lg" onclick="location.href='https://github.com/Yu-Chun1214/X-Village-Todo'">
                         Learn More
                     </button>
             </div>
@@ -74,12 +65,38 @@
             </div>
           </div>
         </div>
-        <div style="margin:auto;margin-right:0px;width:120px"><button id="CRUD" class="btn btn-primary" type="submit" style="margin:auto">Submit</button></div>
+        <div style="margin:auto;margin-right:0px;" id="submit-div"><button id="CRUD" class="btn btn-primary" type="submit" style="margin:auto">Submit</button></div>
         </form>
         
-        <div id='Todo-List'>
-                <ul class="list-group"style="margin:0px;">
-                </ul>
+        <div id='Todo-List' style="margin-top:50px">
+            <div id="display-way">
+              <div style="margin:auto">
+                <div class="dropdown" style="margin:auto;display: inline-block;">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Display
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                      <button class="dropdown-item" type="button" id="show">Show Completed</button>
+                      <button class="dropdown-item" type="button" id="hide">Hide Completed</button>
+                    </div>
+                </div>
+                <!---
+                <div class="dropdown" style="margin:auto;display: inline-block;">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      From
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                      <button class="dropdown-item" type="button">Very Important - Less Important</button>
+                      <button class="dropdown-item" type="button">Order</button>
+                      <button class="dropdown-item" type="button">Less Important - Very Important</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+            --->
+            <!-------------------------list-group------------------>
+            <ul class="list-group"style="margin:0px;" id="main-list">
+            </ul>
         </div>
         
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

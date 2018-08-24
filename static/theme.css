@@ -5,6 +5,9 @@
 div#mode-select select{
     background-color: #e9ecef;
 }
+span[completed='t']{
+    text-decoration: line-through;
+}
 @media only screen and (max-width :374px){
     div#mode-select select{
         width: 70px;
@@ -24,10 +27,13 @@ div#mode-select select{
         width: 300px;
         margin:auto;
     }div#importance-select{
-        width: 90px;
+        width: 110px;
     }
     html{
         font-size: 5px;
+    }
+    div#submit-div{
+        width: 60px;
     }
 }
 @media only screen and (width :375px){
@@ -35,7 +41,7 @@ div#mode-select select{
         width: 70px;
     }
     input[type="event"]{
-        width: 130px;
+        width: 140px;
     }
     div#Todo-List{
         width: 300px;
@@ -53,6 +59,9 @@ div#mode-select select{
     }
     html{
         font-size: 5px;
+    }
+    div#submit-div{
+        width: 60px;
     }
 }
 @media only screen and (max-width:768px) and (min-width:400px){
@@ -79,6 +88,9 @@ div#mode-select select{
     html{
         font-size: 8px;
     }
+    div#submit-div{
+        width: 60px;
+    }
 }
 @media only screen and (min-width:769px){
     div#mode-select select{
@@ -102,13 +114,16 @@ div#mode-select select{
     div#importance-select{
         width: 100px;
     }
+    div#submit-div{
+        width: 80px;
+    }
 }
 @media only screen and (min-width:1500px){
     div#mode-select select{
         width: 200px;
     }
     input[type="event"]{
-        width: 800px;
+        width: 750px;
     }
     div#Todo-List{
         width: 1200px;
@@ -123,6 +138,9 @@ div#mode-select select{
         margin: 0px auto;
     }
     div#importance-select{
-        width: 200px;
+        width: 250px;
+    }
+    div#submit-div{
+        width: 120px;
     }
 }
