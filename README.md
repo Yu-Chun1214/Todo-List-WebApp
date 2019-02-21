@@ -1,5 +1,13 @@
 # X-Village-Todo
 
+python Version: python3
+requirements : requirements.txt
+
+## Build Execute Environment
+```
+pip3 install -r requirements.txt
+```
+
 ## Usage
 ```
 flask run
