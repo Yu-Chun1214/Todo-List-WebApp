@@ -45,7 +45,7 @@ Pygments==2.2.0
 pyttsx==1.1
 pytz==2018.5
 PyYAML==3.13
-requests==2.19.1
+requests==2.20.0
 rsa==3.4.2
 scipy==1.1.0
 simplegeneric==0.8.1
